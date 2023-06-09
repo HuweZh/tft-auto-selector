@@ -6,16 +6,27 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tft-auto-selector" />
+        <module name="tft-auto-selector-ocr" />
+        <module name="tft-auto-selector-aggregation" />
+        <module name="tft-auto-selector-mouse" />
+        <module name="tft-auto-selector-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="tft-auto-selector" target="17" />
+      <module name="tft-auto-selector" target="8" />
+      <module name="tft-auto-selector-aggregation" target="8" />
+      <module name="tft-auto-selector-common" target="8" />
+      <module name="tft-auto-selector-mouse" target="8" />
+      <module name="tft-auto-selector-ocr" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="tft-auto-selector" options="-parameters" />
+      <module name="tft-auto-selector-aggregation" options="-parameters" />
+      <module name="tft-auto-selector-common" options="-parameters" />
+      <module name="tft-auto-selector-mouse" options="-parameters" />
+      <module name="tft-auto-selector-ocr" options="-parameters" />
     </option>
   </component>
 </project>
