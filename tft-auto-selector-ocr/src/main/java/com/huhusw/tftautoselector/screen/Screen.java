@@ -3,21 +3,25 @@ package com.huhusw.tftautoselector.screen;
 import com.huhusw.tftautoselectorcommon.Constant;
 import com.huhusw.tftautoselectorcommon.queue.MyBlockQueue;
 import com.huhusw.tftautoselectorcommon.util.PicUtils;
+import com.melloware.jintellitype.HotkeyListener;
+import com.melloware.jintellitype.JIntellitype;
 import org.springframework.util.StringUtils;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
+import java.util.Objects;
 
 public class Screen extends JFrame {
 
     public static void main(String[] args) {
         JFrame jFrame = new Screen();
-        jFrame.setVisible(true);
+
     }
 
     /**
@@ -46,7 +50,42 @@ public class Screen extends JFrame {
      */
     private String heroName;
 
+    /**
+     * 按键监听事件的开关
+     */
+    private boolean flag;
+
+    /**
+     * 按键事件的代码
+     */
+    private static final int SHORTCUT = 1;
+
+    /**
+     * 按键注册的监听器
+     */
+    private HotkeyListener hotkeyListener = null;
+
     public Screen() {
+
+        // 全局监听按键绑定，绑定d键
+        JIntellitype.getInstance().registerHotKey(SHORTCUT, 0, 'D');
+        hotkeyListener = code -> {
+            switch (code) {
+                case SHORTCUT:
+                    if (flag){
+                        System.out.println("截图");
+                        List<BufferedImage> bufferedImages = PicUtils.screenShot();
+                        try {
+                            MyBlockQueue.getInstance().put(bufferedImages);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    break;
+            }
+        };
+        JIntellitype.getInstance().addHotKeyListener(hotkeyListener);
+
         jPanel = new JPanel();
         // 窗体标题
         setTitle("自动选择卡牌");
@@ -70,15 +109,7 @@ public class Screen extends JFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                BlockingQueue<List<BufferedImage>> myBlockQueue = MyBlockQueue.getInstance();
-                while (true) {
-                    List<BufferedImage> picOfHeroes = PicUtils.screenShot();
-                    try {
-                        myBlockQueue.put(picOfHeroes);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-                }
+                flag = true;
             }
         });
         jPanel.add(button);

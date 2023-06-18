@@ -47,6 +47,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- 全局按键监听支持-->
+        <dependency>
+            <groupId>com.melloware</groupId>
+            <artifactId>jintellitype</artifactId>
+            <version>1.4.1</version>
+        </dependency>
     </dependencies>
 
     <build>

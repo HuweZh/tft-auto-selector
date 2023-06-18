@@ -42,6 +42,10 @@
             <groupId>com.huhusw</groupId>
             <artifactId>tft-auto-selector-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.melloware</groupId>
+            <artifactId>jintellitype</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
