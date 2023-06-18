@@ -37,6 +37,11 @@
             <artifactId>tess4j</artifactId>
             <version>5.7.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.huhusw</groupId>
+            <artifactId>tft-auto-selector-common</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

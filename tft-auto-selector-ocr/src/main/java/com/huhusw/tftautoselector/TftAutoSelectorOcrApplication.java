@@ -1,4 +1,4 @@
-package com.huhusw.tftautoselectorocr;
+package com.huhusw.tftautoselector;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TftAutoSelectorOcrApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TftAutoSelectorOcrApplication.class, args);
+        SpringApplication.run(com.huhusw.tftautoselector.TftAutoSelectorOcrApplication.class, args);
     }
 
 }
