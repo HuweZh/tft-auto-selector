@@ -1,11 +1,10 @@
 package com.huhusw.tftautoselector.pic;
 
+import com.huhusw.tftautoselector.ocr.Ocr;
 import com.huhusw.tftautoselectorcommon.util.PicUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.util.List;
 
 /**
  * 图片的处理
@@ -13,8 +12,12 @@ import java.io.File;
 public class Pic {
 
     public static void main(String[] args) {
-//        PicUtils.screenShot();
-        PicUtils.cutPic();
+        List<BufferedImage> bufferedImages = PicUtils.cutPic();
+        Ocr ocr = new Ocr();
+        List<String> strings = ocr.doOCR(bufferedImages);
+        for (String s : strings) {
+            System.out.println(s);
+        }
     }
 
 

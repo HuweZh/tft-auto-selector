@@ -1,13 +1,17 @@
 package com.huhusw.tftautoselector.screen;
 
 import com.huhusw.tftautoselectorcommon.Constant;
+import com.huhusw.tftautoselectorcommon.queue.MyBlockQueue;
+import com.huhusw.tftautoselectorcommon.util.PicUtils;
 import org.springframework.util.StringUtils;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
 
 public class Screen extends JFrame {
 
@@ -49,7 +53,7 @@ public class Screen extends JFrame {
         // 设置为使用显示在最上层
         setAlwaysOnTop(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(500, 300);
+        setSize(500, 150);
 
         // 设置内容面板
         setContentPane(jPanel);
@@ -66,10 +70,20 @@ public class Screen extends JFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                return;
+                BlockingQueue<List<BufferedImage>> myBlockQueue = MyBlockQueue.getInstance();
+                while (true) {
+                    List<BufferedImage> picOfHeroes = PicUtils.screenShot();
+                    try {
+                        myBlockQueue.put(picOfHeroes);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         });
         jPanel.add(button);
+
+        setVisible(true);
     }
 
     /**
@@ -203,7 +217,7 @@ public class Screen extends JFrame {
                 ", button=" + button +
                 ", costSelector=" + costSelector +
                 ", heroSelector=" + heroSelector +
-                ", heroName='" + heroName + '\'' +
+                ", heroName='" + heroName +
                 '}';
     }
 }

@@ -14,7 +14,7 @@
     <name>tft-auto-selector-common</name>
     <description>tft-auto-selector-common</description>
     <properties>
-        <java.version>8</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>

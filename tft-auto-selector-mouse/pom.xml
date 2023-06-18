@@ -14,7 +14,7 @@
     <name>tft-auto-selector-mouse</name>
     <description>tft-auto-selector-mouse</description>
     <properties>
-        <java.version>8</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>

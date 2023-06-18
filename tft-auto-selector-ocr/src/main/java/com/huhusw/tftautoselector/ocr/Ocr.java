@@ -1,21 +1,32 @@
 package com.huhusw.tftautoselector.ocr;
 
-import java.util.*;
+import net.sourceforge.tess4j.Tesseract;
+
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Ocr {
-    private String target;
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    private Tesseract tesseract;
 
-
-        sc.close();
+    public Ocr() {
+        tesseract = new Tesseract();
+        tesseract.setDatapath("D:\\workspace\\idea\\tessdata");
+        tesseract.setLanguage("chi_sim");
     }
 
-    public String getTarget() {
-        return target;
+    public List<String> doOCR(List<BufferedImage> bufferedImages) {
+        List<String> res = new ArrayList<>();
+        try {
+            for (BufferedImage image : bufferedImages) {
+                String s = tesseract.doOCR(image).replace(" ", "").trim();
+                res.add(s);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return res;
     }
 
-    public void setTarget(String target) {
-        this.target = target;
-    }
+
 }
