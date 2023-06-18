@@ -71,4 +71,44 @@ public class Constant {
         COST_TO_ALL_HERO.put(COST_FOUR, HERO_FOUR);
         COST_TO_ALL_HERO.put(COST_FIVE, HERO_FIVE);
     }
+
+    /**
+     * 英雄的纵坐标
+     */
+    private static final Integer HERO_POSITION_Y = 1390;
+
+    /**
+     * 英雄名字图片的宽度
+     */
+    private static final Integer HERO_PIC_W = 150;
+
+    /**
+     * 英雄名字图片的高度
+     */
+    private static final Integer HERO_PIC_H = 30;
+
+    /**
+     * 第一位英雄名字图片的横坐标
+     */
+    private static final Integer FIRST_HERO_X = 650;
+
+    /**
+     * 第二位英雄名字图片的横坐标
+     */
+    private static final Integer SECOND_HERO_X = 910;
+
+
+    /**
+     * 第三位英雄名字图片的横坐标
+     */
+    private static final Integer THIRD_HERO_X = 1180;
+    /**
+     * 第四位英雄名字图片的横坐标
+     */
+    private static final Integer FOURTH_HERO_X = 1450;
+
+    /**
+     * 第五位英雄名字图片的横坐标
+     */
+    private static final Integer FIFTH_HERO_X = 1720;
 }
