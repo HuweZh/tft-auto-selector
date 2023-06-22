@@ -112,4 +112,90 @@ public class Constant {
      * 第五位英雄名字图片的横坐标
      */
     public static final Integer FIFTH_HERO_X = 1720;
+
+    public static final Map<String, String> name2Name = new HashMap<>();
+
+    static {
+        name2Name.put("凯尔", "凯尔");
+        name2Name.put("艾瑞莉娅", "艾瑞莉娅");
+        name2Name.put("崔丝塔娜", "崔丝塔娜");
+        name2Name.put("阿兹尔", "阿兹尔");
+        name2Name.put("拉克丝", "拉克丝");
+        name2Name.put("瑟庄妮", "瑟庄妮");
+        name2Name.put("内瑟斯", "内瑟斯");
+        name2Name.put("格温", "格温");
+        name2Name.put("盐伦", "盖伦");
+        name2Name.put("阿克尚", "阿克尚");
+        name2Name.put("亚索", "亚索");
+        name2Name.put("塔莉垛", "塔莉垭");
+        name2Name.put("卡莉丝塔", "卡莉斯塔");
+        name2Name.put("艾克", "艾克");
+        name2Name.put("妍娜", "娑娜");
+        name2Name.put("卡西奥佩娅", "卡西奥佩娅");
+        name2Name.put("塔里克", "塔里克");
+        name2Name.put("炸", "烬");
+        name2Name.put("泽丽", "泽丽");
+        name2Name.put("加里奥", "加里奥");
+        name2Name.put("蔚", "蔚");
+        name2Name.put("艾希", "艾希");
+        name2Name.put("杰斯", "杰斯");
+        name2Name.put("克烈", "克烈");
+        name2Name.put("金克丝", "金克斯");
+        name2Name.put("德荷厄斯", "德莱厄斯");
+        name2Name.put("波比", "波比");
+        name2Name.put("卡尔玛", "卡尔玛");
+        name2Name.put("盖伦", "盖伦");
+        name2Name.put("卡特琳娜", "卡特琳娜");
+        name2Name.put("丽联卓", "丽桑卓");
+        name2Name.put("塔莉垭", "塔莉垭");
+        name2Name.put("索拉卡", "索拉卡");
+        name2Name.put("雷克颓", "雷克顿");
+        name2Name.put("维克典", "维克兹");
+
+        name2Name.put("厄加特", "厄加特");
+        name2Name.put("科加斯", "科加斯");
+        name2Name.put("节瑞莉娅", "艾瑞莉娅");
+        name2Name.put("增里克", "塔里克");
+        name2Name.put("玛尔扎哈", "玛尔扎哈");
+        name2Name.put("茂凯", "茂凯");
+        name2Name.put("恭", "慎");
+        name2Name.put("卡芮丁", "卡萨丁");
+        name2Name.put("劫", "劫");
+        name2Name.put("提范", "提莫");
+        name2Name.put("沃里克", "沃里克");
+        name2Name.put("卡莹", "卡莎");
+        name2Name.put("厄斐琉斯", "厄斐琉斯");
+        name2Name.put("雷克塞", "雷克赛");
+        name2Name.put("斯维因", "斯维因");
+        name2Name.put("零克塞", "雷克赛");
+        name2Name.put("佛耶戈", "佛耶戈");
+        name2Name.put("奥莉安娜", "奥莉安娜");
+        name2Name.put("炳", "烬");
+        name2Name.put("提莫", "提莫");
+        name2Name.put("莎弥拉", "莎米拉");
+        name2Name.put("嘴文四世", "嘉文四世");
+        name2Name.put("提苣", "提莫");
+
+        name2Name.put("卡萨丁", "卡萨丁");
+        name2Name.put("维克教", "维克兹");
+        name2Name.put("嘉文四世", "嘉文四世");
+        name2Name.put("赛娜", "赛娜");
+        name2Name.put("黑默丁格", "黑默丁格");
+        name2Name.put("卑尔维斯", "卑尔维斯");
+        name2Name.put("惜", "慎");
+
+        name2Name.put("愚", "慎");
+        name2Name.put("松拉卡", "索拉卡");
+        name2Name.put("收席", "瑟提");
+        name2Name.put("奎栖提", "奎桑提");
+        name2Name.put("奎根提", "奎桑提");
+        name2Name.put("赛恩", "塞恩");
+        name2Name.put("卡莎", "卡莎");
+        name2Name.put("提茧", "提莫");
+        name2Name.put("瑞教", "瑞兹");
+        name2Name.put("想庄妮", "瑟庄妮");
+        name2Name.put("阿狸", "阿狸");
+        name2Name.put("阿猷", "阿狸");
+        name2Name.put("亚托克斯", "亚托克斯");
+    }
 }

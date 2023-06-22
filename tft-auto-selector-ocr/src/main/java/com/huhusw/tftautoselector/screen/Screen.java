@@ -1,5 +1,8 @@
 package com.huhusw.tftautoselector.screen;
 
+import com.github.kwhat.jnativehook.GlobalScreen;
+import com.github.kwhat.jnativehook.NativeHookException;
+import com.huhusw.tftautoselector.keyboard.KeyGlobalListener;
 import com.huhusw.tftautoselectorcommon.Constant;
 import com.huhusw.tftautoselectorcommon.queue.MyBlockQueue;
 import com.huhusw.tftautoselectorcommon.util.PicUtils;
@@ -27,7 +30,7 @@ public class Screen extends JFrame {
     /**
      * 内容面板
      */
-    private JPanel jPanel;
+    private JPanel panel;
 
     /**
      * 按钮
@@ -60,33 +63,9 @@ public class Screen extends JFrame {
      */
     private static final int SHORTCUT = 1;
 
-    /**
-     * 按键注册的监听器
-     */
-    private HotkeyListener hotkeyListener = null;
-
     public Screen() {
 
-        // 全局监听按键绑定，绑定d键
-        JIntellitype.getInstance().registerHotKey(SHORTCUT, 0, 'D');
-        hotkeyListener = code -> {
-            switch (code) {
-                case SHORTCUT:
-                    if (flag){
-                        System.out.println("截图");
-                        List<BufferedImage> bufferedImages = PicUtils.screenShot();
-                        try {
-                            MyBlockQueue.getInstance().put(bufferedImages);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    break;
-            }
-        };
-        JIntellitype.getInstance().addHotKeyListener(hotkeyListener);
-
-        jPanel = new JPanel();
+        panel = new JPanel();
         // 窗体标题
         setTitle("自动选择卡牌");
         // 设置为使用显示在最上层
@@ -95,24 +74,38 @@ public class Screen extends JFrame {
         setSize(500, 150);
 
         // 设置内容面板
-        setContentPane(jPanel);
+        setContentPane(panel);
 
         costSelector = new JComboBox<>();
         this.setCostInfo();
-        jPanel.add(costSelector);
+        panel.add(costSelector);
 
         heroSelector = new JComboBox<>();
         this.setHeroInfo(null);
-        jPanel.add(heroSelector);
+        panel.add(heroSelector);
 
         button = new JButton("自动选择");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                flag = true;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            GlobalScreen.registerNativeHook();
+                        }
+                        catch (NativeHookException ex) {
+                            System.err.println("There was a problem registering the native hook.");
+                            System.err.println(ex.getMessage());
+
+                            System.exit(1);
+                        }
+                        GlobalScreen.addNativeKeyListener(new KeyGlobalListener());
+                    }
+                }).start();
             }
         });
-        jPanel.add(button);
+        panel.add(button);
 
         setVisible(true);
     }
@@ -199,56 +192,5 @@ public class Screen extends JFrame {
                 }
             }
         });
-    }
-
-    public JPanel getjPanel() {
-        return jPanel;
-    }
-
-    public void setjPanel(JPanel jPanel) {
-        this.jPanel = jPanel;
-    }
-
-    public JButton getButton() {
-        return button;
-    }
-
-    public void setButton(JButton button) {
-        this.button = button;
-    }
-
-    public JComboBox<String> getCostSelector() {
-        return costSelector;
-    }
-
-    public void setCostSelector(JComboBox<String> costSelector) {
-        this.costSelector = costSelector;
-    }
-
-    public JComboBox<String> getHeroSelector() {
-        return heroSelector;
-    }
-
-    public void setHeroSelector(JComboBox<String> heroSelector) {
-        this.heroSelector = heroSelector;
-    }
-
-    public String getHeroName() {
-        return heroName;
-    }
-
-    public void setHeroName(String heroName) {
-        this.heroName = heroName;
-    }
-
-    @Override
-    public String toString() {
-        return "Screen{" +
-                "jPanel=" + jPanel +
-                ", button=" + button +
-                ", costSelector=" + costSelector +
-                ", heroSelector=" + heroSelector +
-                ", heroName='" + heroName +
-                '}';
     }
 }

@@ -46,6 +46,10 @@
             <groupId>com.melloware</groupId>
             <artifactId>jintellitype</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.kwhat</groupId>
+            <artifactId>jnativehook</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

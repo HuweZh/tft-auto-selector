@@ -1,6 +1,7 @@
 package com.huhusw.tftautoselectoraggregation.thread;
 
 import com.huhusw.tftautoselector.ocr.Ocr;
+import com.huhusw.tftautoselectorcommon.Constant;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
@@ -24,7 +25,7 @@ public class MyRunnable implements Runnable {
     public void run() {
         List<String> strings = ocr.doOCR(picOfHeroes);
         for (String s : strings) {
-            if (!heroes.contains(s)) {
+            if (!heroes.contains(s) && !Constant.name2Name.containsKey(s)) {
                 System.out.println(s);
                 heroes.add(s);
             }
